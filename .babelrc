@@ -1,2 +1,2 @@
-{ "presets": [ "env" ],
+{ "presets": [ "env", "es2017" ],
   "plugins": ["transform-class-properties"] }

@@ -12,4 +12,3 @@ const word = new Words(wordWrapper, exampleList);
 const keyboard = new Keyboard(keyboardWrapper, enAlphabet);
 
 const game = new Game(word, keyboard);
-console.log(game);

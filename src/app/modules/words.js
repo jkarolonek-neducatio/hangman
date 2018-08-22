@@ -9,14 +9,13 @@ class Words {
   }
 
   randomiseWord() {
+    this.wordArr = [];
     const randomPos = Math.floor(Math.random() * (this.list.length));
     const strToArr = this.list[randomPos].split('');
-    const letterArr = [];
-    for (let j = 0; j < strToArr.length; j += 1) {
-      const letter = new Letter(strToArr[j], this.view);
-      letterArr.push(letter);
-    }
-    this.wordArr = letterArr;
+    this.wordArr = strToArr.map(letter => new Letter(letter, this.view))
+    this.list.splice(randomPos, 1);
+    console.log(this.list);
+    console.log(this.wordArr);
   }
 }
 export default Words;

@@ -15,7 +15,7 @@ class Keyboard extends EventDispatcher {
       const key = new Key(arr[i], this.view);
       this.keyArr.push(key);
       key.on('keypressed', (event) => {
-        this.emit('keytogame', event);
+        this.emit('keypressed', event);
       });
     }
   }

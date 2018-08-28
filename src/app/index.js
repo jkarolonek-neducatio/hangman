@@ -17,4 +17,6 @@ const keyboard = new Keyboard(keyboardWrapper, enAlphabet);
 const hangman = new Hangman(hangmanWrapper);
 
 const game = new Game(word, keyboard, hangman);
+
+
 console.log(game);

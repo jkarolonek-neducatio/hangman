@@ -6,7 +6,6 @@ class Key extends EventDispatcher {
     this.value = value;
     this.container = container;
     this.view = document.createElement('button');
-    // this.state = 'enabled';
     this.view.classList.add('key');
     this.view.innerHTML = this.value;
     this.container.appendChild(this.view);
@@ -14,8 +13,8 @@ class Key extends EventDispatcher {
   }
 
   clickHandler = () => {
-    this.emit('keypressed', this.value);
     this.view.disabled = true;
+    this.emit('keypressed', this.value);
   }
 }
 

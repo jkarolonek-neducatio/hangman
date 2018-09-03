@@ -1,0 +1,84 @@
+$button-color: #e40e0a;
+
+
+
+body {
+  background-color: #222;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.game,
+.hangman-wrapper {
+  padding: 20px;
+  display: inline-block;
+  flex: 0 1 50%;
+  width: 50%;
+  height: 100%;
+}
+.hangman-wrapper {
+  min-height: 400px;
+  background-color: #333;
+}
+.word-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+  background-color: #920525;
+  padding: 20px;
+  min-height: 140px;
+  .letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    font-family: 'Jura', sans-serif;
+    font-size: 5em;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #fff;
+  }
+}
+
+.keyboard-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .key {
+    cursor: pointer;
+    transition: all .4s;
+    display: inline-block;
+    height: 50px;
+    width: 70px;
+    margin: 10px;
+    border-radius: 3px;
+    background-color: $button-color;
+    box-shadow: 0 0 30px $button-color;
+    font-family: 'Jura', sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    border: none;
+    &:hover {
+      background-color: #fff;
+      box-shadow: 0 0 30px $button-color, 0 0 35px $button-color, 0 0 40px $button-color;
+    }
+    &.disabled {
+      color: #000;
+      background-color: darken($button-color, 30%);
+      box-shadow: 0 0 30px darken($button-color, 30%);
+    }
+  }
+}
+.console-text {
+  font-family: 'Jura', sans-serif;
+  text-transform: uppercase;
+  color: greenyellow;
+}

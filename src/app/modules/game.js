@@ -18,6 +18,7 @@ class Game {
           letter.state = 'visible';
           letter.view.classList.remove('hidden');
           letter.view.classList.add('visible');
+          letter.view.innerHTML = this.words.wordArr[i].value;
           this.correctLetters = this.correctLetters + 1;
           this.isLetterPresent = true;
         }
@@ -50,7 +51,6 @@ class Game {
         element.view.disabled = false;
       });
       this.correctLetters = 0;
-      console.log(this.words.wordArr);
     }
   }
 }

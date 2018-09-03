@@ -14,6 +14,7 @@ class Key extends EventDispatcher {
 
   clickHandler = () => {
     this.view.disabled = true;
+    this.view.classList.add('disabled');
     this.emit('keypressed', this.value);
   }
 }

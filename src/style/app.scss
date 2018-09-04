@@ -1,4 +1,5 @@
 $button-color: #e40e0a;
+$scanLineWidth: 2px;
 
 
 
@@ -25,7 +26,14 @@ body {
 }
 .hangman-wrapper {
   min-height: 400px;
-  background-color: #333;
+  /*** WEBKIT ***/
+  background: #333 -webkit-repeating-linear-gradient(
+                  top,
+                  transparent 0px,
+                  transparent $scanLineWidth,
+                  rgba(0, 0, 0, 0.25) $scanLineWidth,
+                  rgba(0, 0, 0, 0.25) $scanLineWidth*2
+  );
 }
 .word-wrapper {
   display: flex;

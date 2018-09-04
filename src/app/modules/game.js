@@ -1,9 +1,9 @@
+/* eslint-disable no-param-reassign */
 class Game {
   constructor(words, keyboard, hangman) {
     this.words = words;
     this.keyboard = keyboard;
     this.hangman = hangman;
-    this.state = 'inprogress';
     this.isLetterPresent = false;
     this.lives = 6;
     this.correctLetters = 0;
@@ -39,19 +39,67 @@ class Game {
   }
 
   checkIfWon() {
+    const nextWord = document.createElement('button');
+    nextWord.innerHTML = 'NEXT SEQUENCE';
     if (this.correctLetters === this.words.wordArr.length) {
-      alert('You win!');
-      while (this.words.view.firstChild) {
-        this.words.view.removeChild(this.words.view.firstChild);
-      }
-
-      this.words.randomiseWord();
-
-      this.keyboard.keyArr.forEach((element) => {
-        element.view.disabled = false;
-      });
-      this.correctLetters = 0;
+      this.words.view.appendChild(nextWord);
+      nextWord.addEventListener('click', this.onClickNextWord);
+      this.disableKeyboard();
     }
+    if (this.correctLetters === this.words.wordArr.length && this.words.list.length === 0) {
+      this.words.view.removeChild(nextWord);
+      nextWord.removeEventListener('click', this.onClickNextWord);
+      this.gameFinished('Why did you have to do that Dave?');
+      this.disableKeyboard();
+    } else if (this.lives === 0) {
+      nextWord.removeEventListener('click', this.onClickNextWord);
+      this.gameFinished('I am afraid I cannot let you do that Dave.');
+      this.disableKeyboard();
+    }
+  }
+
+  gameFinished(message) {
+    this.overlay = document.createElement('div');
+    const msg = document.createElement('span');
+    this.restart = document.createElement('button');
+
+    this.overlay.classList.add('overlay');
+    msg.classList.add('msg');
+    this.restart.classList.add('restart');
+
+    document.body.appendChild(this.overlay);
+    this.overlay.appendChild(msg);
+    this.overlay.appendChild(this.restart);
+
+    msg.innerHTML = message;
+    this.restart.innerHTML = 'Restart game';
+    this.restart.addEventListener('click', this.onClickRestart);
+  }
+
+  onClickRestart = () => {
+    document.body.removeChild(this.overlay);
+    this.restart.removeEventListener('click', this.onClickRestart);
+  };
+
+  onClickNextWord = () => {
+    while (this.words.view.firstChild) {
+      this.words.view.removeChild(this.words.view.firstChild);
+    }
+
+    this.words.randomiseWord();
+
+    this.keyboard.keyArr.forEach((element) => {
+      element.view.disabled = false;
+      element.view.classList.remove('disabled');
+    });
+    this.correctLetters = 0;
+  };
+
+  disableKeyboard() {
+    this.keyboard.keyArr.forEach((element) => {
+      element.view.disabled = true;
+      element.view.classList.add('disabled');
+    });
   }
 }
 export default Game;

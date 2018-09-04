@@ -5,7 +5,6 @@ class Letter {
     this.view = document.createElement('div');
     this.state = 'hidden';
     this.view.classList.add('letter', 'hidden');
-    // this.view.innerHTML = this.value;
     this.container.appendChild(this.view);
   }
 }

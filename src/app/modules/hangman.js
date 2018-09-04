@@ -13,7 +13,7 @@ class Hangman {
   }
 
   displayIntro() {
-    const introMsg = 'Welcome to ISS interface, input password to stop autodestruction sequence';
+    const introMsg = 'Welcome to HAL 9000 internal interface, input correct sequence to stop the AI protocol';
     const intro = document.createElement('div');
     intro.classList.add('intro', 'console-text');
     this.view.appendChild(intro);
@@ -25,7 +25,7 @@ class Hangman {
     const interval = setInterval(() => {
       document.getElementsByClassName(destination)[0].innerHTML += message.charAt(i);
       i += 1;
-      if (i > message.length){
+      if (i > message.length) {
         clearInterval(interval);
       }
     }, speed);

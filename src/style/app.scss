@@ -1,13 +1,29 @@
 $button-color: #e40e0a;
+$word-wrapper-color: #920525;
 $scanLineWidth: 2px;
 
+@keyframes showOverlay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
+
+html {
+  height: 100%;
+  width: 100%;
+  //overflow: hidden;
+}
 
 body {
   background-color: #222;
   height: 100%;
   width: 100%;
   margin: 0;
+  position: relative;
 }
 
 .game-wrapper {
@@ -22,7 +38,6 @@ body {
   display: inline-block;
   flex: 0 1 50%;
   width: 50%;
-  height: 100%;
 }
 .hangman-wrapper {
   min-height: 400px;
@@ -39,19 +54,47 @@ body {
   display: flex;
   flex-direction: row;
   margin-bottom: 30px;
-  background-color: #920525;
+  background-color: $word-wrapper-color;
   padding: 20px;
   min-height: 140px;
+  position: relative;
   .letter {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 15px;
     font-family: 'Jura', sans-serif;
     font-size: 5em;
     font-weight: 900;
     text-transform: uppercase;
     color: #fff;
+    min-width: 60px;
+    margin: 0 10px;
+    border-bottom: 5px solid #fff;
+  }
+  .next-word,
+  .tries {
+    font-family: 'Jura', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: #fff;
+    min-height: 30px;
+    background-color: $word-wrapper-color;
+    border: none;
+    position: absolute;
+  }
+  .next-word {
+    cursor: pointer;
+    bottom: 0;
+    right: 0;
+    &:hover {
+      background-color: lighten($word-wrapper-color, 10%);
+    }
+  }
+  .tries {
+    top: 0;
+    right: 0;
+    padding: 0 10px;
   }
 }
 
@@ -89,4 +132,50 @@ body {
   font-family: 'Jura', sans-serif;
   text-transform: uppercase;
   color: greenyellow;
+  font-weight: bold;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  background: url('../public/images/hal.jpg') no-repeat center center;
+  opacity: 0;
+  &.animate {
+    animation: showOverlay 1s forwards;
+  }
+  .msg {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-family: 'Jura', sans-serif;
+    text-transform: uppercase;
+    color: red;
+    font-weight: bold;
+    font-size: 2em;
+    top: 17%;
+  }
+  .restart {
+    transition: all .2s;
+    cursor: pointer;
+    top: 23%;
+    background-color: $button-color;
+    border: none;
+    font-family: 'Jura', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.8em;
+    color: #fff;
+    &:hover {
+      background-color: darken($button-color, 10%);
+    }
+  }
+  .msg,
+  .restart {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

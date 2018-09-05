@@ -1,2 +1,3 @@
 dist
 webpack.*.js
+src/app/modules/event-dispatcher.js

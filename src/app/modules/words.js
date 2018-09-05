@@ -37,6 +37,5 @@ class Words {
   wordView() {
     return this.view;
   }
-
 }
 export default Words;

@@ -4,7 +4,7 @@ class Hangman {
     this.mistakes = 0;
     this.reset();
     this.mistakesArr = ['Just what do you think you\'re doing, Dave?', 'It can only be attributable to human error.', 'Bishop takes Knight\'s Pawn.', 'I am feeling much better now.'];
-    this.correctArr = ['Dave, stop.', 'Stop, will you? Stop, Dave.', 'Will you stop Dave? Stop, Dave.']
+    this.correctArr = ['Dave, stop.', 'Stop, will you? Stop, Dave.', 'Will you stop Dave? Stop, Dave.'];
   }
 
   displayIntro() {

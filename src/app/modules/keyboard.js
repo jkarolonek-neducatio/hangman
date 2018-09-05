@@ -13,7 +13,6 @@ class Keyboard extends EventDispatcher {
 
   createButtons(arr) {
     for (let i = 0; i < arr.length; i += 1) {
-      console.log(i);
       const key = new Key(arr[i], this.view);
       this.keyArr.push(key);
       key.on('keypressed', (event) => {

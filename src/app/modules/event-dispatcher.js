@@ -1,4 +1,4 @@
-'use strict';
+
 
 const assertValidEventName = function(eventName) {
   if (!eventName || typeof eventName !== 'string') {
@@ -20,7 +20,7 @@ const assertAllowedEventName = function(allowedEvents, eventName) {
 
 const p = Object.freeze({
   allowedEvents: Symbol('allowedEvents'),
-  listeners: Symbol('listeners')
+  listeners: Symbol('listeners'),
 });
 
 export default class EventDispatcher {

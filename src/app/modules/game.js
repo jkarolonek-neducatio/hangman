@@ -59,16 +59,16 @@ class Game {
     if (this.correctLetters === this.words.getWordLength() && this.words.getListLength() === 0) {
       this.words.wordView().removeChild(nextWord);
       nextWord.removeEventListener('click', this.onClickNextWord);
-      this.gameFinished('Why did you have to do that Dave?');
+      this.gameFinished('Why did you have to do that Dave?', 'You win! Click here to play again');
       this.keyboard.disable();
     } else if (this.lives === 0) {
       nextWord.removeEventListener('click', this.onClickNextWord);
-      this.gameFinished('I am afraid I cannot let you do that Dave.');
+      this.gameFinished('I am afraid I cannot let you do that Dave.', 'You lose :( Click here to try again');
       this.keyboard.disable();
     }
   }
 
-  gameFinished(message) {
+  gameFinished(message, btnmsg) {
     this.overlay = document.createElement('div');
     const msg = document.createElement('div');
     this.restart = document.createElement('button');
@@ -83,7 +83,7 @@ class Game {
     this.overlay.appendChild(this.restart);
 
     msg.innerHTML = message;
-    this.restart.innerHTML = 'Restart game';
+    this.restart.innerHTML = btnmsg;
     this.restart.addEventListener('click', this.onClickRestart);
   }
 

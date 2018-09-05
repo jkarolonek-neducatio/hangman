@@ -4,11 +4,10 @@ import Keyboard from './keyboard';
 import Hangman from './hangman';
 
 class Game {
-  constructor(list, alphabet) {
-    this.list = list;
-    this.alphabet = alphabet;
-    this.words = new Words(this.list);
-    this.keyboard = new Keyboard(this.alphabet);
+  constructor(data) {
+    this.data = data;
+    this.words = new Words(this.data.words);
+    this.keyboard = new Keyboard(this.data.alphabet);
     this.hangman = new Hangman();
     this.isLetterPresent = false;
     this.lives = 6;

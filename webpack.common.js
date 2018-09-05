@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // Require  html-webpack-plugin plugin
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: `${__dirname}/src/app/index.js`, // webpack entry point. Module to start building dependency graph
@@ -7,6 +8,7 @@ module.exports = {
       template: `${__dirname}/src/public/index.html`,
       inject: 'body',
     }),
+    new CleanWebpackPlugin('dist'),
   ],
   output: {
     path: `${__dirname}/dist`, // Folder to store generated bundle
@@ -28,6 +30,19 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {}
+          }
+        ]
+      },
+      {
+        // https://github.com/webpack/webpack/issues/6586
+        type: 'javascript/auto',
+        test: /data\.json$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'data.json'
+            }
           }
         ]
       }

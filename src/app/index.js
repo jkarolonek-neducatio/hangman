@@ -1,12 +1,10 @@
 import '../style/app.scss';
 import '../public/images/hal.jpg';
+import data from '../public/json/data.json';
 import Game from './modules/game';
 
-const exampleList = ['testing', 'hedge', 'hog'];
-
-const enAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-
-const game = new Game(exampleList, enAlphabet);
-
-
-console.log(game);
+fetch(data)
+  .then(response => response.json())
+  .then((data) => {
+    const game = new Game(data);
+  });
